@@ -1,13 +1,18 @@
 #include<iostream>
 using namespace std;
 
+const int ROWS = 4;
+const int COLS = 5;
+
 void FillRand(int Arr[], const int n);
 void FillRand(double Arr[], const int n);
 void FillRand(char Arr[], const int n);
+void FillRand(int Arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void Print(int Arr[], const int n);
 void Print(double Arr[], const int n);
 void Print(char Arr[], const int n);
+void Print(int Arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void Sort(int Arr[], const int n);
 void Sort(double Arr[], const int n);
@@ -61,6 +66,24 @@ void main()
 	Print(Crr, SIZE);
 	Sort(Crr, SIZE);
 	Print(Crr, SIZE);
+
+	////////////////////////////////////////////////////////////////
+
+	cout << "Двумерные массивы: " << endl;
+	
+	int Drr[ROWS][COLS] = 
+	{
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 9}
+	};
+
+	FillRand(Drr, ROWS, COLS);
+	Print(Drr, ROWS, COLS);
+	cout << "Сумма элементов массива: " << Sum(Drr, ROWS, COLS) << endl;
+	cout << "Среднее арифметическое : " << Avg(Drr, ROWS, COLS) << endl;
+	cout << "Минимальное значение в массиве: " << minValueIn(Drr, ROWS, COLS) << endl;
+	cout << "Максимальное значение в массиве: " << maxValueIn(Drr, ROWS, COLS) << endl;
 }
 
 void FillRand(int Arr[], const int n)
@@ -88,6 +111,17 @@ void FillRand(char Arr[], const int n)
 	for (int i = 0; i < n; i++)
 	{
 		Arr[i] = rand();
+	}
+}
+
+void FillRand(int Arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			Arr[i][j] = rand() % 100;
+		}
 	}
 }
 
@@ -119,6 +153,18 @@ void Print(char Arr[], const int n)
 		cout << Arr[i] << "\t";
 	}
 	cout << endl;
+}
+
+void Print(int Arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << Arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
 }
 
 void Sort(int Arr[], const int n)

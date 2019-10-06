@@ -1,5 +1,11 @@
 https://github.com/okovtun/PS_VS_ITU_35
 
+Home work:
+1. Перегрузить функции FillRand, Print, Sum, Avg, minValueIn, maxValueIn и Sort
+для двумерных массивов типа double и char.
+2. Залить проект на github и прислать ссылку на репозиторий.
+
+
 1. Зарегистрироваться на github.com;
 2. В проект ArrayFunctions добавить функции:
 ??? Sum(???);	//Возвращает сумму лементов массива;
