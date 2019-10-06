@@ -2,12 +2,28 @@
 using namespace std;
 
 void FillRand(int Arr[], const int n);
+void FillRand(double Arr[], const int n);
+void FillRand(char Arr[], const int n);
+
 void Print(int Arr[], const int n);
+void Print(double Arr[], const int n);
+void Print(char Arr[], const int n);
+
 void Sort(int Arr[], const int n);
+void Sort(double Arr[], const int n);
+void Sort(char Arr[], const int n);
+
 int  Sum(int Arr[], const int n);	//Прототип функции - Function declaration
+double  Sum(double Arr[], const int n);	//Прототип функции - Function declaration
+
 double Avg(int Arr[], const int n);
+double Avg(double Arr[], const int n);
+
 int  minValueIn(int Arr[], const int n);
+double minValueIn(double Arr[], const int n);
+
 int  maxValueIn(int Arr[], const int n);
+double maxValueIn(double Arr[], const int n);
 
 void main()
 {
@@ -36,6 +52,15 @@ void main()
 	cout << "Среднее арифметическое : " << Avg(Brr, m) << endl;
 	cout << "Минимальное значение в массиве: " << minValueIn(Brr, m) << endl;
 	cout << "Максимальное значение в массиве: " << maxValueIn(Brr, m) << endl;
+
+	///////////////////////////////////////////////////////////////
+
+	const int SIZE = 8;
+	char Crr[SIZE];
+	FillRand(Crr, SIZE);
+	Print(Crr, SIZE);
+	Sort(Crr, SIZE);
+	Print(Crr, SIZE);
 }
 
 void FillRand(int Arr[], const int n)
@@ -47,7 +72,46 @@ void FillRand(int Arr[], const int n)
 	}
 }
 
+void FillRand(double Arr[], const int n)
+{
+	//Заполнение массива случайными числами:
+	for (int i = 0; i < n; i++)
+	{
+		Arr[i] = rand() % 10000;
+		Arr[i] /= 100;
+	}
+}
+
+void FillRand(char Arr[], const int n)
+{
+	//Заполнение массива случайными числами:
+	for (int i = 0; i < n; i++)
+	{
+		Arr[i] = rand();
+	}
+}
+
 void Print(int Arr[], const int n)
+{
+	//Вывод массива на экран:
+	for (int i = 0; i < n; i++)
+	{
+		cout << Arr[i] << "\t";
+	}
+	cout << endl;
+}
+
+void Print(double Arr[], const int n)
+{
+	//Вывод массива на экран:
+	for (int i = 0; i < n; i++)
+	{
+		cout << Arr[i] << "\t";
+	}
+	cout << endl;
+}
+
+void Print(char Arr[], const int n)
 {
 	//Вывод массива на экран:
 	for (int i = 0; i < n; i++)
@@ -74,9 +138,53 @@ void Sort(int Arr[], const int n)
 	}
 }
 
+void Sort(double Arr[], const int n)
+{
+	//Сортировка:
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (Arr[j] < Arr[i])
+			{
+				double buffer = Arr[i];
+				Arr[i] = Arr[j];
+				Arr[j] = buffer;
+			}
+		}
+	}
+}
+
+void Sort(char Arr[], const int n)
+{
+	//Сортировка:
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (Arr[j] < Arr[i])
+			{
+				char buffer = Arr[i];
+				Arr[i] = Arr[j];
+				Arr[j] = buffer;
+			}
+		}
+	}
+}
+
 int  Sum(int Arr[], const int n)
 {
 	int Sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		Sum += Arr[i];
+	}
+	return Sum;
+}
+
+double Sum(double Arr[], const int n)
+{
+	double Sum = 0;
 	for (int i = 0; i < n; i++)
 	{
 		Sum += Arr[i];
@@ -89,6 +197,11 @@ double Avg(int Arr[], const int n)
 	return (double)Sum(Arr, n) / n;
 }
 
+double Avg(double Arr[], const int n)
+{
+	return Sum(Arr, n) / n;
+}
+
 int  minValueIn(int Arr[], const int n)
 {
 	int min = Arr[0];
@@ -98,9 +211,29 @@ int  minValueIn(int Arr[], const int n)
 	}
 	return min;
 }
-int  maxValueIn(int Arr[], const int n)
+double minValueIn(double Arr[], const int n)
+{
+	double min = Arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (Arr[i] < min)min = Arr[i];
+	}
+	return min;
+}
+
+int maxValueIn(int Arr[], const int n)
 {
 	int max = Arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (Arr[i] > max)max = Arr[i];
+	}
+	return max;
+}
+
+double maxValueIn(double Arr[], const int n)
+{
+	double max = Arr[0];
 	for (int i = 0; i < n; i++)
 	{
 		if (Arr[i] > max)max = Arr[i];
