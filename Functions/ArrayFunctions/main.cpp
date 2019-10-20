@@ -231,14 +231,15 @@ void Sort(int Arr[ROWS][COLS], const int ROWS, const int COLS)
 		{
 			for (int k = i; k < ROWS; k++)
 			{
-				int l;
-				if (k == i)l = j + 1; 
-				else l = 0;
-				for (; l < COLS; l++)
+				//int l;	
+				//if (k == i)l = j + 1; else l = 0;
+				// condition ? expression1 : expression2;
+				 ;
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
 				{
 					//ЕСЛИ перебираемый элемент меньше, чем выбранный,
 					//их нужно поменять местами.
-					if (Arr[k][l] > Arr[i][j])
+					if (Arr[k][l] < Arr[i][j])
 					{
 						int buffer = Arr[i][j];
 						Arr[i][j] = Arr[k][l];
@@ -246,6 +247,10 @@ void Sort(int Arr[ROWS][COLS], const int ROWS, const int COLS)
 					}
 					iterations++;
 				}
+				/*for (initialization; condition; expression)
+				{
+					
+				}*/
 			}
 		}
 	}
