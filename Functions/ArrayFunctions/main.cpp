@@ -1,31 +1,10 @@
-#include<iostream>
-using namespace std;
-
-const int ROWS = 4;
-const int COLS = 5;
-
-void FillRand(int Arr[], const int n);
-void FillRand(double Arr[], const int n);
-void FillRand(char Arr[], const int n);
-void FillRand(int Arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>
-void Print(T Arr[], const int n);
-template<typename T>
-void Print(T Arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>void Sort(T Arr[], const int n);
-template<typename T>void Sort(T Arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>T  Sum(T Arr[], const int n);	//Прототип функции - Function declaration
-
-template<typename T>double Avg(T Arr[], const int n);
-
-template<typename T>T  minValueIn(T Arr[], const int n);
-
-template<typename T>T maxValueIn(T Arr[], const int n);
-
-
+#include"Functions.h"
+#include"Print.cpp"
+#include"Sort.cpp"
+#include"Sum.cpp"
+#include"Avg.cpp"
+#include"minValueIn.cpp"
+#include"maxValueIn.cpp"
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -85,154 +64,18 @@ void main()
 	Print(Drr, ROWS, COLS);
 }
 
-void FillRand(int Arr[], const int n)
-{
-	//Заполнение массива случайными числами:
-	for (int i = 0; i < n; i++)
-	{
-		Arr[i] = rand() % 100;
-	}
-}
-
-void FillRand(double Arr[], const int n)
-{
-	//Заполнение массива случайными числами:
-	for (int i = 0; i < n; i++)
-	{
-		Arr[i] = rand() % 10000;
-		Arr[i] /= 100;
-	}
-}
-
-void FillRand(char Arr[], const int n)
-{
-	//Заполнение массива случайными числами:
-	for (int i = 0; i < n; i++)
-	{
-		Arr[i] = rand();
-	}
-}
-
-void FillRand(int Arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			Arr[i][j] = rand() % 100;
-		}
-	}
-}
-
-template<typename T>void Print(T Arr[], const int n)
-{
-	//Вывод массива на экран:
-	for (int i = 0; i < n; i++)
-	{
-		cout << Arr[i] << "\t";
-	}
-	cout << endl;
-}
-
-template<typename T>void Print(T Arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			cout << Arr[i][j] << "\t";
-		}
-		cout << endl;
-	}
-}
-
-template<typename T>void Sort(T Arr[], const int n)
-{
-	//Сортировка:
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = i + 1; j < n; j++)
-		{
-			if (Arr[j] < Arr[i])
-			{
-				T buffer = Arr[i];
-				Arr[i] = Arr[j];
-				Arr[j] = buffer;
-			}
-		}
-	}
-}
 
 
-template<typename T>void Sort(T Arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	int iterations = 0;
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			for (int k = i; k < ROWS; k++)
-			{
-				//int l;	
-				//if (k == i)l = j + 1; else l = 0;
-				// condition ? expression1 : expression2;
-				 ;
-				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
-				{
-					//ЕСЛИ перебираемый элемент меньше, чем выбранный,
-					//их нужно поменять местами.
-					if (Arr[k][l] < Arr[i][j])
-					{
-						int buffer = Arr[i][j];
-						Arr[i][j] = Arr[k][l];
-						Arr[k][l] = buffer;
-					}
-					iterations++;
-				}
-				/*for (initialization; condition; expression)
-				{
-					
-				}*/
-			}
-		}
-	}
-	cout << "Массив отсортирован за " << iterations << " итераций." << endl;
-}
-
-template<typename T>T  Sum(T Arr[], const int n)
-{
-	T Sum = 0;
-	for (int i = 0; i < n; i++)
-	{
-		Sum += Arr[i];
-	}
-	return Sum;
-}
 
 
-template<typename T>double Avg(T Arr[], const int n)
-{
-	return (double)Sum(Arr, n) / n;
-}
 
 
-template<typename T>T  minValueIn(T Arr[], const int n)
-{
-	T min = Arr[0];
-	for (int i = 0; i < n; i++)
-	{
-		if (Arr[i] < min)min = Arr[i];
-	}
-	return min;
-}
 
-template<typename T>T maxValueIn(T Arr[], const int n)
-{
-	T max = Arr[0];
-	for (int i = 0; i < n; i++)
-	{
-		if (Arr[i] > max)max = Arr[i];
-	}
-	return max;
-}
+
+
+
+
+
+
+
 
